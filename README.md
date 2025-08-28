@@ -10,3 +10,32 @@
 A robust and secure PHP-based user registration system featuring comprehensive server-side validation, MySQL database integration, and a modern, responsive user interface.
 
 ---
+
+## ✨ Features
+
+- 📝 **Clean Registration Form** with intuitive user interface
+- ✅ **Server-side Validation** for enhanced security
+- 🗄️ **MySQL Database Integration** with proper table structure
+- 📱 **Fully Responsive Design** that works on all devices
+- 🎨 **Modern UI/UX** with smooth animations and transitions
+- 🔒 **Secure Data Handling** with POST method
+- 💬 **Real-time Feedback** with error and success messages
+- 🚀 **Easy Setup** with automated table creation
+
+---
+
+## 🗂️ Project Structure
+
+```
+user-registration/
+│
+├── 📄 index.php              # Main registration form
+├── 📄 submit.php             # Handles form submission, validation, and database insertion
+├── 📄 createTable&db.php     # DB connection + creates the `users` table
+├── 🎨 styles.css             # Styling and animations
+├── 📁 screenshots/           # Project screenshots
+└── 📄 README.md             # Documentation
+```
+
+> Note: Using `&` in file names can cause issues on some systems. If you encounter problems, consider renaming to `create_table_and_db.php` and update references.
+---
