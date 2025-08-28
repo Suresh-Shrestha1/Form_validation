@@ -39,3 +39,26 @@ user-registration/
 
 > Note: Using `&` in file names can cause issues on some systems. If you encounter problems, consider renaming to `create_table_and_db.php` and update references.
 ---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| **PHP 7.4+** | Backend logic & validation |
+| **MySQL 5.7+** | Data persistence |
+| **HTML5** | Structure & semantics |
+| **CSS3** | Styling & animations |
+| **JavaScript** | Client-side interactions |
+
+---
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- 🐘 **PHP** (version 7.4 or higher)
+- 🗄️ **MySQL** (version 5.7 or higher)
+- 🌐 **Web Server** (Apache, Nginx, or XAMPP/WAMP/MAMP)
+- 🖥️ **Web Browser** (Chrome, Firefox, Safari, or Edge)
+
+---
