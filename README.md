@@ -62,3 +62,50 @@ Before you begin, ensure you have the following installed:
 - 🖥️ **Web Browser** (Chrome, Firefox, Safari, or Edge)
 
 ---
+
+## 🚀 Installation Guide
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Suresh-Shrestha1/user-registration.git
+cd user-registration
+```
+
+### 2️⃣ Database Setup
+```sql
+-- Create the database
+CREATE DATABASE IF NOT EXISTS user_db;
+USE user_db;
+```
+
+### 3️⃣ Configure Database Connection
+Update the database credentials in `submit.php` and `createTable&db.php`:
+```php
+$servername = "localhost";
+$username = "your_username";
+$password = "your_password";
+$dbname = "user_db";
+```
+
+### 4️⃣ Create the Users Table
+Run the setup script:
+```bash
+php createTable&db.php
+```
+
+### 5️⃣ Start Your Web Server
+```bash
+# If using PHP's built-in server
+php -S localhost:8000
+
+# Or place files in your web server's directory
+# Example: /var/www/html/ or htdocs/
+```
+
+### 6️⃣ Access the Application
+Open your browser and navigate to:
+```
+http://localhost:8000/index.php
+```
+
+---
