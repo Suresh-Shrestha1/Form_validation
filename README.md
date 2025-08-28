@@ -109,3 +109,73 @@ http://localhost:8000/index.php
 ```
 
 ---
+
+## 📐 Database Schema
+
+```sql
+CREATE TABLE users (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    fullname VARCHAR(40) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_email (email),
+    INDEX idx_username (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+---
+
+## ✔️ Validation Rules
+
+| Field | Validation Rules | Example |
+|-------|-----------------|---------|
+| 📛 **Full Name** | • Required<br>• Max 40 characters<br>• Letters and spaces only | John Doe |
+| 📧 **Email** | • Required<br>• Valid email format<br>• Unique in database | user@example.com |
+| 👤 **Username** | • Required<br>• Letters followed by numbers<br>• 3-20 characters<br>• Unique | user123 |
+| 🔑 **Password** | • Required<br>• Minimum 8 characters<br>• Mix of letters, numbers, symbols | Pass@123 |
+
+Example HTML constraints (you can add these to `index.php` inputs):
+```html
+<input name="full_name" maxlength="40" required>
+<input name="email" type="email" required>
+<input name="username"
+       required
+       pattern="^[A-Za-z]+[A-Za-z0-9]*[0-9]+$"
+       title="Start with letters and end with at least one number (e.g., user123)">
+<input name="password" type="password" minlength="8" required>
+```
+
+Server-side (PHP) username check:
+```php
+if (!preg_match('/^[A-Za-z]+[A-Za-z0-9]*\d+$/', $username)) {
+    $errors[] = 'Username must start with letters and end with numbers (e.g., user123).';
+}
+```
+
+---
+
+## 🔒 Security Considerations
+
+### ⚠️ Current Implementation
+- ❌ Passwords stored in plain text
+- ❌ No CSRF protection
+- ❌ No rate limiting
+- ❌ Basic XSS protection only
+
+### ✅ Recommended Improvements
+```php
+// Password Hashing
+$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+// Prepared Statements
+$stmt = $conn->prepare("INSERT INTO users (fullname, email, username, password) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $fullname, $email, $username, $hashedPassword);
+
+// CSRF Token
+session_start();
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+```
+
+---
